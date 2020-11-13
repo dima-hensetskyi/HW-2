@@ -2,23 +2,21 @@ let minNumber;
 let maxNumber;
 
 do {
-    minNumber = +prompt("Введіть, будь ласка, мінімальне значення", "0");
-    minNumber = +minNumber.toFixed(0);
+    minNumber = Math.round(+prompt("Введіть, будь ласка, мінімальне значення", "0"));
 
-} while (isNaN(minNumber));
-
+} while (isNaN(minNumber) || minNumber < 0);
 
 do {
-    maxNumber = +prompt("Введіть, будь ласка, максимальне значення", "100");
-    maxNumber = +maxNumber.toFixed(0);
+    maxNumber = Math.round(+prompt("Введіть, будь ласка, максимальне значення", "100"));
 
-
-    while (maxNumber <= minNumber && maxNumber !== 0) {
-        maxNumber = +prompt("Введіть, будь ласка, максимальне значення, яке більше мінімального");
-        maxNumber = +maxNumber.toFixed(0);
+    while (minNumber >= maxNumber) {
+        maxNumber = Math.round(+prompt("Введіть, будь ласка, максимальне значення, яке більше мінімального"));
+        if (maxNumber === 0) {
+            break;
+        };
     };
 
-} while (isNaN(maxNumber));
+} while (isNaN(maxNumber) || maxNumber === 0);
 
 let odd = confirm("Чи потрібно пропускати парні числа?");
 let result = 0;
@@ -26,7 +24,7 @@ let result = 0;
 for (let i = minNumber; i < maxNumber + 1; i++) {
     if (odd === false) {
         result += i;
-    } else if (odd === true) {
+    } else {
         i % 2 === 0 ? 0 : result += i;
     };
 };
