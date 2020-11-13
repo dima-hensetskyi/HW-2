@@ -11,12 +11,12 @@ do {
 
     while (minNumber >= maxNumber) {
         maxNumber = Math.round(+prompt("Введіть, будь ласка, максимальне значення, яке більше мінімального"));
-        if (maxNumber === 0) {
+        if (!maxNumber) {
             break;
         };
     };
 
-} while (isNaN(maxNumber) || maxNumber === 0);
+} while (isNaN(maxNumber) || !maxNumber);
 
 let odd = confirm("Чи потрібно пропускати парні числа?");
 let result = 0;
